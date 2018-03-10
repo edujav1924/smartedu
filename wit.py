@@ -33,13 +33,14 @@ def ReconocimientoVoz():
 
     # converting response content to JSON format
     data = json.loads(resp.content.decode('utf-8'))
-
+    print (data)
     entidad = data['entities']['intent'][0]['value']
     print(data)
-    try:
-        if(entidad=='set_temperatura'):
-            tareas(entidad,data['entities']['temperature'][0]['value'])
-        elif(entidad=='set_luces'):
-            tareas(entidad,data['entities']['on_off'][0]['value'])
-    except:
-        print('error')
+    if(entidad=='set_temperatura'):
+        tareas(entidad,data['entities']['temperature'][0]['value'])
+    elif(entidad=='set_luces'):
+        tareas(entidad,data['entities']['on_off'][0]['value'])
+    elif (entidad=='get_temperatura'):
+        print("entre")
+        tareas(entidad,0)
+    
